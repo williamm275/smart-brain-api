@@ -24,12 +24,13 @@ const saltRounds = 10;
 app.use(bodyParser.json());
 app.use(cors());
 
+app.get("/", (req, res) => { res.send('success') });
 app.post("/signin", handleSignin(db, bcrypt));
 app.post("/register", handleRegister(db, bcrypt, saltRounds));
 app.get("/profile/:id", handleProfileGet(db));
 app.put("/image", handleImage(db));
 app.post("/imageUrl", handleApiCall);
 
-app.listen(process.env.PORT, () => {
-  console.log(`app is running on port ${process.env.PORT}`);
+app.listen(3000, () => {
+  console.log(`app is running on port 3000`);
 });
